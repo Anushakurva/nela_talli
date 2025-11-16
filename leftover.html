@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Booking | Leftover Food</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #fafafa;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background: #e63946;
+        color: white;
+        padding: 25px;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .box {
+        background: white;
+        width: 90%;
+        max-width: 700px;
+        margin: 25px auto;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        color: #e63946;
+        margin-bottom: 10px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        border-radius: 7px;
+        border: 1px solid #bbb;
+        font-size: 1rem;
+    }
+
+    button {
+        background: #e63946;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        width: 100%;
+        border-radius: 7px;
+        margin-top: 15px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: #d62828;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+   Pre-Booking for Leftover Food
+</header>
+
+<div class="box">
+    <h2>If you have leftover food, please contact us 🍱</h2>
+    <p>Fill the details below — we will arrange pickup and serve the needy ❤</p>
+
+    <form onsubmit="sendWhatsApp(event)">
+
+        <label>Your Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label>Contact Number</label>
+        <input type="tel" id="phone" placeholder="Your phone number" required>
+
+        <label>Location</label>
+        <input type="text" id="location" placeholder="Address / Area" required>
+
+        <label>Quantity of Food</label>
+        <input type="text" id="quantity" placeholder="Example: 10 plates, 2kg, etc." required>
+
+        <label>Veg or Non-Veg</label>
+        <select id="type" required>
+            <option value="">Select Type</option>
+            <option value="Veg">Veg</option>
+            <option value="Non-Veg">Non-Veg</option>
+        </select>
+
+        <label>Timings</label>
+        <input type="text" id="time" placeholder="Example: 8 PM - 10 PM" required>
+
+        <button type="submit">Send Details on WhatsApp</button>
+    </form>
+</div>
+
+<script>
+function sendWhatsApp(event) {
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let location = document.getElementById("location").value;
+    let quantity = document.getElementById("quantity").value;
+    let type = document.getElementById("type").value;
+    let time = document.getElementById("time").value;
+
+    let message =
+        "🍱 Leftover Food Pre-Booking %0A%0A" +
+        "Name: " + name + "%0A" +
+        "Contact Number: " + phone + "%0A" +
+        "Location: " + location + "%0A" +
+        "Quantity: " + quantity + "%0A" +
+        "Food Type: " + type + "%0A" +
+        "Timings: " + time + "%0A";
+
+    let url = "https://wa.me/919849603265?text=" + message;
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
